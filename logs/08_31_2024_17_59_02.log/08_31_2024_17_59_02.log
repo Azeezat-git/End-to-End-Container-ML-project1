@@ -1,0 +1,8 @@
+[ 2024-08-31 17:59:02,564 ] 97 werkzeug - WARNING -  * Debugger is active!
+[ 2024-08-31 17:59:02,568 ] 97 werkzeug - INFO -  * Debugger PIN: 692-140-505
+[ 2024-08-31 17:59:08,666 ] 97 werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 17:59:08] "[35m[1mPOST /predictdata HTTP/1.1[0m" 500 -
+[ 2024-08-31 17:59:08,681 ] 97 werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 17:59:08] "[36mGET /predictdata?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+[ 2024-08-31 17:59:08,682 ] 97 werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 17:59:08] "[36mGET /predictdata?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[ 2024-08-31 17:59:08,690 ] 97 werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 17:59:08] "GET /predictdata?__debugger__=yes&cmd=resource&f=console.png&s=woCio1NrbJI3oJfSSiyw HTTP/1.1" 200 -
+[ 2024-08-31 17:59:08,713 ] 97 werkzeug - INFO - 127.0.0.1 - - [31/Aug/2024 17:59:08] "[36mGET /predictdata?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[ 2024-08-31 17:59:49,811 ] 97 werkzeug - INFO -  * Detected change in '/Users/azeezat/for-programming/datascience/DS-MLOPS-NLP/Feature_engineering/End-to-End-ML-project1/app.py', reloading
