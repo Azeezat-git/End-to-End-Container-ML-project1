@@ -85,12 +85,6 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      - name: Clean up Docker cache
-        run: docker system prune -f
-
-      - name: Pull latest images
-        run: |
-          docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
       - name: Stop and remove the container if it is already running
         run: |
           CONTAINER_ID=$(docker ps -q --filter "name=mltest")
@@ -98,6 +92,14 @@ jobs:
             docker stop "$CONTAINER_ID"
             docker rm "$CONTAINER_ID"
           fi
+
+      - name: Clean up Docker cache
+        run: docker system prune -f
+
+      - name: Pull latest images
+        run: |
+          docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
+
       - name: Run Docker image to serve users
         run: |
           docker run -d -p 8080:8080 --ipc="host" --name=mltest -e 'AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}' -e 'AWS_SECRET_ACCESS_KEY= ${{ secrets.AWS_SECRET_ACCESS_KEY }}' -e 'AWS_REGION=${{ secrets.AWS_REGION }}' ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
