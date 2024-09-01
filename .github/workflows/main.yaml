@@ -77,10 +77,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Remove student_performance image
-        run: |
-          docker rmi 758560478625.dkr.ecr.us-east-1.amazonaws.com/student_performance
-
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
@@ -92,6 +88,10 @@ jobs:
             docker stop "$CONTAINER_ID"
             docker rm "$CONTAINER_ID"
           fi
+
+      - name: Remove student_performance image
+        run: |
+          docker rmi 758560478625.dkr.ecr.us-east-1.amazonaws.com/student_performance
 
       - name: Clean up Docker cache
         run: docker system prune -f
